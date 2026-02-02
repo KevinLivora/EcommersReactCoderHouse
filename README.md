@@ -1,26 +1,36 @@
-# Preentrega 1 – Crea tu Landing | React JS
+# E-commerce React – Entrega 2
 
-Proyecto realizado para el curso de React JS (CoderHouse).
+Proyecto desarrollado en React como parte del curso de ReactJS (CoderHouse).
 
-## Descripción
-Este proyecto corresponde a la Preentrega 1 del curso y consiste en la creación de la landing page inicial de un e-commerce utilizando React y Vite.
+## Entrega 2: Navega las rutas
 
-## Funcionalidades
-- Barra de navegación (NavBar) con:
-  - Logo / nombre de la tienda
-  - Enlaces de navegación
-  - Widget de carrito de compras
-- Componente ItemListContainer:
-  - Renderizado debajo del NavBar
-  - Recibe un mensaje de bienvenida mediante props
+La aplicación implementa navegación entre distintas vistas utilizando **React Router**:
+
+- Catálogo principal de productos
+- Catálogo filtrado por categorías
+- Vista en detalle de un producto
+- Ruta 404 para páginas inexistentes
+
+## Funcionalidades implementadas
+
+- Navegación con React Router (`BrowserRouter`, `Routes`, `Route`)
+- Rutas dinámicas para categorías y productos
+- Separación entre componentes contenedores y de presentación
+- Uso de `useParams` para leer parámetros de la URL
+- Llamadas asíncronas simuladas con Promises y `setTimeout`
+- Renderizado de listas con `map()` y `key`
+- Contador de productos en la vista de detalle
 
 ## Tecnologías utilizadas
-- React JS
+
+- React
 - Vite
-- JavaScript
+- React Router DOM
+- JavaScript (ES6+)
 - CSS
 
 ## Cómo ejecutar el proyecto
+
 ```bash
 npm install
 npm run dev
