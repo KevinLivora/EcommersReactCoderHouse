@@ -1,0 +1,22 @@
+.count {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.count__controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.count__controls button {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+}
+
+.count__add {
+    padding: 10px 12px;
+    border-radius: 12px;
+}

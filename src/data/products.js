@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: "1",
+    title: "Remera Negra",
+    description: "Remera de algodón, corte clásico.",
+    price: 12000,
+    stock: 10,
+    category: "remeras",
+    image: "https://via.placeholder.com/500x300?text=Remera+Negra",
+  },
+  {
+    id: "2",
+    title: "Zapatillas Urbanas",
+    description: "Zapatillas cómodas para uso diario.",
+    price: 45000,
+    stock: 7,
+    category: "zapatillas",
+    image: "https://via.placeholder.com/500x300?text=Zapatillas",
+  },
+  {
+    id: "3",
+    title: "Gorra",
+    description: "Gorra ajustable.",
+    price: 9000,
+    stock: 15,
+    category: "accesorios",
+    image: "https://via.placeholder.com/500x300?text=Gorra",
+  },
+  {
+    id: "4",
+    title: "Remera Blanca",
+    description: "Remera blanca básica.",
+    price: 11000,
+    stock: 12,
+    category: "remeras",
+    image: "https://via.placeholder.com/500x300?text=Remera+Blanca",
+  },
+];
