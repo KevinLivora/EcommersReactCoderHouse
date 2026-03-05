@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../../services/productService";
 import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css";
+import {
+    getProducts,
+    getProductsByCategory,
+} from "../../services/firestoreService";
 
-const ItemListContainer = ({ greeting }) => {
+    const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
 
     const [items, setItems] = useState([]);
@@ -13,23 +15,45 @@ const ItemListContainer = ({ greeting }) => {
     useEffect(() => {
         setLoading(true);
 
-        getProducts(categoryId)
-        .then((data) => setItems(data))
-        .finally(() => setLoading(false));
-    }, [categoryId]); // recomendación: param en dependencias
+        const fetchData = async () => {
+        try {
+            const data = categoryId
+            ? await getProductsByCategory(categoryId)
+            : await getProducts();
+
+            setItems(data);
+        } catch (error) {
+            console.error("Error trayendo productos:", error);
+            setItems([]);
+        } finally {
+            setLoading(false);
+        }
+        };
+
+        fetchData();
+    }, [categoryId]);
+
+    if (loading) {
+        return (
+        <main className="container">
+            <p>Cargando productos...</p>
+        </main>
+        );
+    }
+
+    if (items.length === 0) {
+        return (
+        <main className="container">
+            {greeting && <h2>{greeting}</h2>}
+            <p>No hay productos para mostrar.</p>
+        </main>
+        );
+    }
 
     return (
         <main className="container">
-        <section className="hero">
-            <h1>{greeting}</h1>
-            {categoryId ? (
-            <p>Mostrando categoría: <b>{categoryId}</b></p>
-            ) : (
-            <p>Catálogo principal</p>
-            )}
-        </section>
-
-        {loading ? <p>Cargando productos...</p> : <ItemList items={items} />}
+        {greeting && <h2>{greeting}</h2>}
+        <ItemList items={items} />
         </main>
     );
 };

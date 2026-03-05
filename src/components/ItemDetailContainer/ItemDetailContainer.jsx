@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../services/productService";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import { getProductById } from "../../services/firestoreService";
 
 const ItemDetailContainer = () => {
+
     const { itemId } = useParams();
 
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
         setLoading(true);
 
         getProductById(itemId)
-        .then((data) => setItem(data))
-        .finally(() => setLoading(false));
+        .then((data) => {
+            setItem(data);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+
     }, [itemId]);
 
-    if (loading) return <main className="container"><p>Cargando detalle...</p></main>;
-    if (!item) return <main className="container"><p>Producto no encontrado.</p></main>;
+    if (loading) return <p>Cargando producto...</p>;
 
-    return (
-        <main className="container">
-        <ItemDetail item={item} />
-        </main>
-    );
+    if (!item) return <p>Producto no encontrado</p>;
+
+    return <ItemDetail item={item} />;
 };
 
 export default ItemDetailContainer;
